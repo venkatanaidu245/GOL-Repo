@@ -63,8 +63,8 @@ stages {
     stage('Deploy War') {
       steps {
           //deploy adapters: [tomcat8(credentialsId: 'tomcat-cred', path: '', url: 'http://18.220.134.203:8080/')], contextPath: null, war: '**/*.war'
-          sh label: '', script: 'ansible-playbook deploy-withinfra.yml'
-          //sh label: '', script: 'ansible-playbook deploy.yml'
+          //sh label: '', script: 'ansible-playbook deploy-withinfra.yml'
+          sh label: '', script: 'ansible-playbook deploy.yml'
       }
  }
 }
@@ -73,7 +73,7 @@ post {
             archiveArtifacts 'gameoflife-web/target/*.war'
         }
         failure {
-            mail to:"raknas000@gmail.com", subject:"FAILURE: ${currentBuild.fullDisplayName}", body: "Build failed"
+            mail to:"rayankulavenkatanaidu@gmail.com", subject:"FAILURE: ${currentBuild.fullDisplayName}", body: "Build failed"
         }
     }       
 }
